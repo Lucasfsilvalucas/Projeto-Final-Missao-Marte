@@ -1,0 +1,54 @@
+OK: Quantidade em F?cil
+OK: Indicadores em F?cil
+OK: Posi??o inicial exclusiva F?cil Base de pouso
+OK: Posi??o inicial exclusiva F?cil Professor
+OK: Posi??o inicial exclusiva F?cil Engenheiro
+OK: Posi??o inicial exclusiva F?cil Professor
+OK: Posi??o inicial exclusiva F?cil Engenheiro
+OK: Posi??o inicial exclusiva F?cil Asteroide
+OK: Posi??o inicial exclusiva F?cil Inimigo
+OK: Nave inicia na base F?cil
+OK: Quantidade em M?dio
+OK: Indicadores em M?dio
+OK: Posi??o inicial exclusiva M?dio Base de pouso
+OK: Posi??o inicial exclusiva M?dio Professor
+OK: Posi??o inicial exclusiva M?dio Engenheiro
+OK: Posi??o inicial exclusiva M?dio Professor
+OK: Posi??o inicial exclusiva M?dio Engenheiro
+OK: Posi??o inicial exclusiva M?dio Astronauta
+OK: Posi??o inicial exclusiva M?dio Asteroide
+OK: Posi??o inicial exclusiva M?dio Asteroide
+OK: Posi??o inicial exclusiva M?dio Inimigo
+OK: Posi??o inicial exclusiva M?dio Inimigo
+OK: Nave inicia na base M?dio
+OK: Quantidade em Dif?cil
+OK: Indicadores em Dif?cil
+OK: Posi??o inicial exclusiva Dif?cil Base de pouso
+OK: Posi??o inicial exclusiva Dif?cil Professor
+OK: Posi??o inicial exclusiva Dif?cil Engenheiro
+OK: Posi??o inicial exclusiva Dif?cil Professor
+OK: Posi??o inicial exclusiva Dif?cil Engenheiro
+OK: Posi??o inicial exclusiva Dif?cil Astronauta
+OK: Posi??o inicial exclusiva Dif?cil Asteroide
+OK: Posi??o inicial exclusiva Dif?cil Asteroide
+OK: Posi??o inicial exclusiva Dif?cil Asteroide
+OK: Posi??o inicial exclusiva Dif?cil Inimigo
+OK: Posi??o inicial exclusiva Dif?cil Inimigo
+OK: Posi??o inicial exclusiva Dif?cil Inimigo
+OK: Nave inicia na base Dif?cil
+OK: Comandos v?lidos/inv?lidos
+OK: Embarque em c?lula vazia
+OK: Embarque na c?lula com passageiro
+OK: Conserva??o de passageiros ap?s embarque
+OK: Ainda n?o venceu s? por embarcar
+OK: Desembarque libera capacidade
+OK: Vit?ria somente ap?s entrega
+OK: Conserva??o de passageiros ap?s entrega
+OK: Colis?o diminui vida
+OK: Colis?o diminui pontos al?m do movimento
+OK: Comando Q aborta a partida
+OK: Interface mostra indicadores de entrega
+OK: Vit?ria registrada
+OK: Consulta de ranking JSON
+OK: Limpeza do ranking
+TOTAL: 53 verifica??es aprovadas.
