@@ -1,16 +1,19 @@
-# Compiled class file
+# Arquivos compilados, logs e caches
 *.class
-
-# Log file
 *.log
+**/build/
+**/.gradle/
+**/out/
+hs_err_pid*
+replay_pid*
 
-# BlueJ files
+# Arquivos de IDE
+.idea/
+*.iml
 *.ctxt
-
-# Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Pacotes gerados
 *.jar
 *.war
 *.nar
@@ -19,8 +22,16 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
-**/build/
-**/.gradle/
+# Gradle Wrapper do código-fonte
+!**/gradle/wrapper/gradle-wrapper.jar
+
+# JARs do pacote executável da Fase 5
+!**/missao-marte-fase-05-executaveis/servidor/*.jar
+!**/missao-marte-fase-05-executaveis/cliente/lib/*.jar
+
+# Dados locais e configurações privadas
+**/servidor/dados/
+*.mv.db
+*.trace.db
+ranking.json
+.env
