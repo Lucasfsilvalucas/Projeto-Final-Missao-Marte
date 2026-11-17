@@ -1,0 +1,11 @@
+**/build/
+.gradle/
+out/
+ranking.json
+.idea/
+*.iml
+
+**/build/
+**/.gradle/
+ranking.json
+*.class

@@ -1,0 +1,41 @@
+@base = http://localhost:8080
+@nome = PilotoMarte
+@senha = senha-apenas-para-demonstracao
+
+### Cadastro
+POST {{base}}/api/usuarios
+Content-Type: application/json
+
+{"nome":"{{nome}}","senha":"{{senha}}"}
+
+### Login
+# @name login
+POST {{base}}/api/auth/login
+Content-Type: application/json
+
+{"nome":"{{nome}}","senha":"{{senha}}"}
+
+### Ranking sem token (401)
+GET {{base}}/api/ranking
+
+### Vitória
+POST {{base}}/api/partidas
+Authorization: Bearer {{login.response.body.$.token}}
+Content-Type: application/json
+
+{"dificuldade":"MEDIO","resultado":"VITORIA","pontuacao":120,"duracaoSegundos":95,"movimentos":31}
+
+### Derrota
+POST {{base}}/api/partidas
+Authorization: Bearer {{login.response.body.$.token}}
+Content-Type: application/json
+
+{"dificuldade":"DIFICIL","resultado":"DERROTA","pontuacao":-10,"duracaoSegundos":31,"movimentos":14}
+
+### Histórico
+GET {{base}}/api/partidas/minhas?pagina=0&tamanho=10
+Authorization: Bearer {{login.response.body.$.token}}
+
+### Ranking global
+GET {{base}}/api/ranking
+Authorization: Bearer {{login.response.body.$.token}}
