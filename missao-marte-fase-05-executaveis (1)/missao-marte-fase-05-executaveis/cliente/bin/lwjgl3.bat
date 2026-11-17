@@ -68,7 +68,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set "CLASSPATH=%APP_HOME%\lib\*"
+sset "CLASSPATH=%APP_HOME%\lib\*"
 
 
 @rem Execute lwjgl3
