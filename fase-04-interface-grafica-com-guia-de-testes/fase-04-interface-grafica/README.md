@@ -1,6 +1,6 @@
 # Missão Marte — Fase 04: Interface gráfica
 
-Evolução da Fase 3 para um jogo desktop com **sprites, animações, sons, movimentação visual suave e HUD**, preservando o domínio do jogo e a dinâmica por turnos.
+Evolução da Fase 3 para um jogo desktop com **sprites, animações, sons, movimentação visual suave e HUD**, com movimento do jogador por casas e patrulha inimiga em tempo real.
 
 ## Requisitos
 
@@ -46,13 +46,9 @@ As propriedades são repassadas ao launcher por `lwjgl3/build.gradle`. O `rankin
 
 ## Assets
 
-As **17 imagens PNG** e os **8 arquivos WAV** estão em `core/assets/`. Foram gerados localmente pelo código-fonte `tools/GeradorDeAssets.java` e não usam arte de terceiros. Para recriá-los:
+O mapa básico tem **19 × 19 casas**, com fundo estrelado, exibidas por completo durante a partida. A grade serve para movimento e colisões. A nave do jogador ocupa duas casas, com o bico como posição de referência para embarque e entrega. A propulsão alterna duas chamas a cada movimento concluído. A patrulha inimiga começa após a primeira saída da base.
 
-```powershell
-java tools\GeradorDeAssets.java
-```
-
-O catálogo de imagens e sons fica em `gdx/recursos`. Ajuste o catálogo se substituir arquivos por outros com nomes ou dimensões diferentes.
+Os sprites personalizados e os oito sons estão em `core/assets/`. Os catálogos ficam em `gdx/recursos`. O script `tools/GeradorDeAssets.java` gera os recursos provisórios da versão original e pode sobrescrever arquivos de mesmo nome.
 
 ## Organização
 
@@ -60,7 +56,7 @@ O catálogo de imagens e sons fica em `gdx/recursos`. Ajuste o catálogo se subs
 - `core/assets`: sprites e WAV;
 - `lwjgl3`: inicializador desktop;
 - `docs/tutorial.md`: arquitetura e implementação;
-- `docs/evidencias.md`: roteiro de evidências reais a preencher após execução no Windows;
+- [Evidências dos testes no Windows](docs/evidencias.md): relatório e capturas da Fase 4;
 - `docs/creditos.md`: autoria e licença dos recursos.
 
-**Atenção à validação:** o código de domínio e de aplicação foi compilado isoladamente neste ambiente, mas a execução integral do Gradle, o resultado dos testes JUnit e a janela/audio ainda precisam ser conferidos no Windows. Não trate a fase como aprovada até concluir essa validação.
+**Validação no Windows.** O build passou, o jogo foi executado e a vitória no Médio e a limpeza do ranking foram registradas no [relatório de evidências](docs/evidencias.md).

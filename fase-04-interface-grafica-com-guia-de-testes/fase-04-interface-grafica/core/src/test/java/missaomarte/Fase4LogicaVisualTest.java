@@ -15,9 +15,9 @@ class Fase4LogicaVisualTest {
         PosicaoVisual p=new PosicaoVisual(4,2);p.atualizar(.1f,12);
         assertEquals(4,p.x());assertEquals(2,p.y());
     }
-    @Test void repeticaoRespeitaAtrasoIntervaloEParada(){
+    @Test void repeticaoRespeitaIntervaloEParada(){
         RepetidorDeTecla r=new RepetidorDeTecla();r.iniciar();
-        assertFalse(r.atualizar(.27f));assertTrue(r.atualizar(.02f));
+        assertFalse(r.atualizar(.13f));assertTrue(r.atualizar(.02f));
         assertFalse(r.atualizar(.12f));assertTrue(r.atualizar(.03f));
         r.parar();assertFalse(r.atualizar(1));r.iniciar();assertFalse(r.atualizar(.1f));
     }

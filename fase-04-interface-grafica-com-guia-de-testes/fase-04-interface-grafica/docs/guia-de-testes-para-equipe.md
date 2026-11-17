@@ -101,7 +101,7 @@ A janela do Missão Marte deve abrir em aproximadamente **800 × 600**. Deixe o 
 .\gradlew.bat :lwjgl3:run -Dmissaomarte.semente=4 --console=plain
 ```
 
-A mesma semente e a mesma sequência de teclas devem produzir o mesmo cenário e a mesma sequência de movimentos dos inimigos.
+A mesma semente reproduz as posições iniciais. A patrulha inimiga começa quando a nave sai da base e avança pelo tempo de jogo. Em uma partida nova, aguarde alguns segundos na base, saia e depois pare para conferir que os inimigos continuam se movendo.
 
 ### Execução sem dispositivo de áudio
 

@@ -2,7 +2,6 @@ package missaomarte.gdx;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.graphics.Color;
 import missaomarte.gdx.recursos.Imagem;
 import missaomarte.gdx.recursos.Som;
 final class MenuScreen extends TelaBase {
@@ -26,7 +25,6 @@ final class MenuScreen extends TelaBase {
         game.batch.draw(game.recursos.animacao(Imagem.PROPULSOR,.09f).getKeyFrame(com.badlogic.gdx.utils.TimeUtils.millis()/1000f,true),370,475,60,60);
         game.batch.draw(game.recursos.quadro(Imagem.NAVE),370,480,60,60);
         game.batch.end();
-        retangulo(130,155,540,315,new Color(.09f,.17f,.27f,1));
         centralizar("MISSÃO MARTE UNIFOR",430);
         centralizar("1 - Nova missão",350);
         centralizar("2 - Ranking Top 5",310);

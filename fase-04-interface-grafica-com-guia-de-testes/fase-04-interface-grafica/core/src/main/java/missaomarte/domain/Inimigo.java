@@ -12,6 +12,9 @@ public final class Inimigo implements EntidadeMapa {
             case 2 -> posicao.deslocar(0, 1);
             default -> posicao.deslocar(0, -1);
         };
+        if (Math.abs(destino.x()) > limite || Math.abs(destino.y()) > limite) {
+            destino = posicao.deslocar(posicao.x() - destino.x(), posicao.y() - destino.y());
+        }
         if (Math.abs(destino.x()) <= limite && Math.abs(destino.y()) <= limite) posicao = destino;
     }
     @Override public char getSimbolo() { return 'X'; }

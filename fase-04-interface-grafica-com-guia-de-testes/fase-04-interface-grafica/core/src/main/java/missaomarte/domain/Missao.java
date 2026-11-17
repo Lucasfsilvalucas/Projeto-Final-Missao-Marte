@@ -38,13 +38,20 @@ public final class Missao {
         return numero;
     }
     public boolean venceu() { return entregues == totalPassageiros; }
-    public void moverInimigos(Random random, int limite) {
-        for (Inimigo inimigo : inimigos) inimigo.mover(random, limite);
+    public boolean moverInimigos(Random random, int limite) {
+        boolean colisao = false;
+        for (Inimigo inimigo : inimigos) {
+            Posicao origem = inimigo.getPosicao();
+            inimigo.mover(random, limite);
+            if (!nave.ocupa(origem) && nave.ocupa(inimigo.getPosicao())) {
+                colisao = true;
+            }
+        }
+        return colisao;
     }
     public boolean verificaColisao() {
-        Posicao p = nave.getPosicao();
-        return asteroides.stream().anyMatch(a -> a.getPosicao().equals(p))
-            || inimigos.stream().anyMatch(i -> i.getPosicao().equals(p));
+        return asteroides.stream().anyMatch(a -> nave.ocupa(a.getPosicao()))
+            || inimigos.stream().anyMatch(i -> nave.ocupa(i.getPosicao()));
     }
     public List<EntidadeMapa> entidadesVisiveis() {
         List<EntidadeMapa> todas = new ArrayList<>();

@@ -4,6 +4,7 @@ import com.badlogic.gdx.InputAdapter;
 import missaomarte.application.Partida;
 import missaomarte.domain.Dificuldade;
 final class NovaPartidaScreen extends TelaBase {
+    private static final int LIMITE_MAPA = 9;
     private final StringBuilder nome=new StringBuilder();
     private Dificuldade dificuldade=Dificuldade.MEDIO;
     NovaPartidaScreen(MissaoMarteGame game) { super(game); }
@@ -15,7 +16,7 @@ final class NovaPartidaScreen extends TelaBase {
             if (k==Input.Keys.BACKSPACE && nome.length()>0) { nome.deleteCharAt(nome.length()-1);return true; }
             if (k==Input.Keys.ENTER) {
                 String piloto=nome.toString().isBlank()?"Piloto Anonimo":nome.toString().trim();
-                Partida partida=new Partida(game.criador.criar(dificuldade,5), dificuldade,5,piloto,game.random);
+                Partida partida=new Partida(game.criador.criar(dificuldade,LIMITE_MAPA), dificuldade,LIMITE_MAPA,piloto,game.random);
                 game.setScreen(new GameScreen(game,partida));return true;
             } return false;
         }

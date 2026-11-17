@@ -1,13 +1,13 @@
 package missaomarte.domain;
 public enum Dificuldade {
-    FACIL(30, 4, 1, 1), MEDIO(20, 5, 2, 2), DIFICIL(45, 5, 3, 3);
-    private final int pontosIniciais, passageiros, asteroides, inimigos;
-    Dificuldade(int pontos, int passageiros, int asteroides, int inimigos) {
-        this.pontosIniciais = pontos; this.passageiros = passageiros;
+    FACIL(30, 2, 2), MEDIO(20, 4, 4), DIFICIL(45, 8, 8);
+    private final int pontosIniciais, asteroides, inimigos;
+    Dificuldade(int pontos, int asteroides, int inimigos) {
+        this.pontosIniciais = pontos;
         this.asteroides = asteroides; this.inimigos = inimigos;
     }
     public int pontosIniciais() { return pontosIniciais; }
-    public int quantidadePassageiros() { return passageiros; }
+    public int quantidadePassageiros() { return 10; }
     public int quantidadeAsteroides() { return asteroides; }
     public int quantidadeInimigos() { return inimigos; }
     public static Dificuldade deString(String texto) {

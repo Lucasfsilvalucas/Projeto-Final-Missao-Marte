@@ -3,6 +3,7 @@ public final class PosicaoVisual {
     private float x,y,alvoX,alvoY;
     public PosicaoVisual(float x,float y) {this.x=x;this.y=y;this.alvoX=x;this.alvoY=y;}
     public float x(){return x;} public float y(){return y;}
+    public boolean emMovimento() { return x != alvoX || y != alvoY; }
     public void alvo(float x,float y){alvoX=x;alvoY=y;}
     public void atualizar(float delta,float velocidade) {
         if(delta<=0||velocidade<=0)return;

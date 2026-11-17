@@ -24,9 +24,17 @@ class RankingServiceTest {
         assertEquals(5,r.listar().size());assertEquals(16,r.listar().get(0).pontos());
     }
     @Test void naoSubstituiEmpateNoUltimo() {
-        var memoria=new Memoria();var r=new RankingService(memoria);
-        for(int i=0;i<5;i++) memoria.items.add(new RankingEntry("P"+i,40,Dificuldade.FACIL,1,"",0));
-        assertFalse(r.registrarVitoria(vitoria(2)));assertEquals(5,r.listar().size());
+        var memoria = new Memoria();
+        var ranking = new RankingService(memoria);
+        var tentativa = vitoria(99);
+        int pontuacaoEmpatada = tentativa.getPontos();
+        for (int i = 0; i < 5; i++) {
+            memoria.items.add(new RankingEntry("P" + i, pontuacaoEmpatada,
+                Dificuldade.FACIL, 1, "", 0));
+        }
+        var antes = ranking.listar();
+        assertFalse(ranking.registrarVitoria(tentativa));
+        assertEquals(antes, ranking.listar());
     }
     @Test void limpa() {var r=new RankingService(new Memoria());r.registrarVitoria(vitoria(1));r.limpar();assertTrue(r.listar().isEmpty());}
 }

@@ -25,11 +25,11 @@ public final class Recursos implements AutoCloseable {
         assets.finishLoading();
         for(Imagem i:Imagem.values()) {
             Texture textura=assets.get(i.caminho,Texture.class);
-            textura.setFilter(Texture.TextureFilter.Linear,Texture.TextureFilter.Linear);
+            textura.setFilter(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest);
             TextureRegion[] partes=new TextureRegion[i.quadros];
             for(int n=0;n<i.quadros;n++) partes[n]=new TextureRegion(textura,n*i.largura,0,i.largura,i.altura);
             quadros.put(i,partes);
-            animacoes.put(i,new Animation<>(i==Imagem.PROPULSOR?.09f:i==Imagem.INIMIGO?.3f:.25f,partes));
+            animacoes.put(i,new Animation<>((i==Imagem.PROPULSOR || i==Imagem.PROPULSOR_MOVIMENTO)?.09f:i==Imagem.INIMIGO?.3f:.25f,partes));
         }
         Gdx.app.log("MissaoMarte", "Assets: "+Imagem.values().length+" imagens, "+(semAudio?0:Som.values().length)+" sons carregados");
     }

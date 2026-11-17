@@ -1,6 +1,7 @@
 package missaomarte.gdx;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,6 +14,7 @@ import missaomarte.gdx.recursos.Recursos;
 import missaomarte.gdx.audio.GerenciadorDeSom;
 
 public final class MissaoMarteGame extends Game {
+    static final Color COR_TEXTO = new Color(0xffe81fff);
     public final CriadorMissao criador;
     public final RankingService ranking;
     public final Random random;
@@ -35,6 +37,7 @@ public final class MissaoMarteGame extends Game {
         batch = new SpriteBatch();
         shapes = new ShapeRenderer();
         font = new BitmapFont();
+        font.setColor(COR_TEXTO);
         font.getData().setScale(1.2f);
         recursos=new Recursos(semAudio);recursos.carregar();sons=new GerenciadorDeSom(recursos);
         menu();

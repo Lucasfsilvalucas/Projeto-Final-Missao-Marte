@@ -23,7 +23,7 @@ public final class HudRenderer {
         formas.setColor(Color.GREEN);
         if(m.getTotalPassageiros()>0)formas.rect(480,252,265f*m.getEntregues()/m.getTotalPassageiros(),14);
         formas.end();Gdx.gl.glDisable(GL20.GL_BLEND);
-        batch.begin();fonte.setColor(Color.WHITE);
+        batch.begin();
         for(int i=0;i<3;i++)batch.draw(recursos.quadro(i<m.getNave().getVidas()?Imagem.VIDA_CHEIA:Imagem.VIDA_VAZIA),36+i*31,561,23,23);
         fonte.draw(batch,"Pontos: "+partida.getPontos(),150,577);
         fonte.draw(batch,"Tempo: "+partida.getTempoSegundos()+"s",308,577);

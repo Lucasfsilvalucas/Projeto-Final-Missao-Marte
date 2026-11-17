@@ -6,11 +6,8 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputAdapter;
 import missaomarte.gdx.recursos.Imagem;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
-import com.badlogic.gdx.utils.Align;
 
 abstract class TelaBase implements Screen {
     protected final MissaoMarteGame game;
@@ -28,7 +25,7 @@ abstract class TelaBase implements Screen {
     }
     @Override public void show() { log("show()"); }
     @Override public final void render(float delta) {
-        Gdx.gl.glClearColor(.035f,.055f,.095f,1);
+        Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.viewport.apply();
         game.batch.setProjectionMatrix(game.camera.combined);
@@ -40,15 +37,11 @@ abstract class TelaBase implements Screen {
     }
     protected abstract void desenhar(float delta);
     protected void escrever(String s,float x,float y) {
-        game.batch.begin(); game.font.setColor(Color.WHITE); game.font.draw(game.batch,s,x,y); game.batch.end();
+        game.batch.begin(); game.font.draw(game.batch,s,x,y); game.batch.end();
     }
     protected void centralizar(String s,float y) {
         GlyphLayout gl=new GlyphLayout(game.font,s);
         escrever(s,400-gl.width/2,y);
-    }
-    protected void retangulo(float x,float y,float w,float h,Color cor) {
-        game.shapes.begin(ShapeRenderer.ShapeType.Filled);
-        game.shapes.setColor(cor);game.shapes.rect(x,y,w,h);game.shapes.end();
     }
     @Override public void resize(int w,int h) { log("resize("+w+","+h+")");game.viewport.update(w,h,true); }
     @Override public void pause() { log("pause()"); }

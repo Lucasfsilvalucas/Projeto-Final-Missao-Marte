@@ -1,10 +1,12 @@
 package missaomarte.application;
 import missaomarte.domain.*;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 public final class Partida {
+    public static final float INTERVALO_INIMIGOS = 0.65f;
     private final Missao missao;
     private final Dificuldade dificuldade;
     private final int limite;
@@ -13,6 +15,8 @@ public final class Partida {
     private final long inicio = System.nanoTime();
     private long fim = -1;
     private int pontos, movimentos;
+    private boolean patrulhaAtiva;
+    private float tempoPatrulha;
     private EstadoPartida estado = EstadoPartida.EM_ANDAMENTO;
     public Partida(Missao missao, Dificuldade dificuldade, int limite, String piloto, Random random) {
         this.missao = Objects.requireNonNull(missao); this.dificuldade = dificuldade;
@@ -54,17 +58,38 @@ public final class Partida {
             }
             boolean moveu = nave.mover(dx, dy, limite);
             movimentos++; pontos--;
-            if (moveu) eventos.add(EventoTurno.MOVIMENTO);
+            if (moveu) {
+                eventos.add(EventoTurno.MOVIMENTO);
+                patrulhaAtiva |= !nave.getPosicao().equals(missao.getBase().getPosicao());
+            }
         }
-        missao.moverInimigos(random, limite);
-        if (missao.verificaColisao()) {
-            nave.perderVida(); pontos -= 5;
-            mensagem += " Colisão! -1 vida e -5 pontos.";
-            eventos.add(EventoTurno.COLISAO);
-        }
+        if (missao.verificaColisao()) mensagem += registrarColisao(eventos);
         int entregues = missao.desembarcarNaBase();
         if (entregues > 0) { mensagem += " " + entregues + " passageiro(s) entregues na base."; eventos.add(EventoTurno.ENTREGA); }
-        if (nave.getVidas() <= 0 || pontos <= 0) {
+        return concluirAcao(mensagem, eventos);
+    }
+
+    public Optional<ResultadoTurno> atualizarInimigos(float delta) {
+        if (!patrulhaAtiva || estado != EstadoPartida.EM_ANDAMENTO) return Optional.empty();
+        tempoPatrulha += delta;
+        if (tempoPatrulha < INTERVALO_INIMIGOS) return Optional.empty();
+        tempoPatrulha %= INTERVALO_INIMIGOS;
+        if (!missao.moverInimigos(random, limite)) return Optional.empty();
+
+        List<EventoTurno> eventos = new ArrayList<>();
+        String mensagem = registrarColisao(eventos);
+        return Optional.of(concluirAcao(mensagem, eventos));
+    }
+
+    private String registrarColisao(List<EventoTurno> eventos) {
+        missao.getNave().perderVida();
+        pontos -= 5;
+        eventos.add(EventoTurno.COLISAO);
+        return " Colisão! -1 vida e -5 pontos.";
+    }
+
+    private ResultadoTurno concluirAcao(String mensagem, List<EventoTurno> eventos) {
+        if (missao.getNave().getVidas() <= 0 || pontos <= 0) {
             estado = EstadoPartida.DERROTA;
             mensagem += " GAME OVER.";
             eventos.add(EventoTurno.DERROTA);
